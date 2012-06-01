@@ -27,6 +27,14 @@ public class mil {
         this.stamp = stamp;
     }
 
+    public int getC() {
+        return c;
+    }
+
+    public int getK() {
+        return k;
+    }
+
     public void setC(int c) {
         this.c = c;
     }
