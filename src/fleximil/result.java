@@ -17,11 +17,11 @@ import java.util.Arrays;
  * @author Gourab
  */
 public class result {
-    int c,k;
-    int no_of_rows; int no_of_columns;
-    String datasetName;
-    ArrayList<ArrayList<Object>> data;
-    String resultroot = "."+File.separator+"results"+File.separator;
+    private int c,k;
+    private int no_of_rows; int no_of_columns;
+    private String datasetName;
+    private ArrayList<ArrayList<Object>> data;
+    private String resultroot = "."+File.separator+"results"+File.separator;
 
     public result(String datasetname,int no_of_rows, int no_of_columns) {
         this.no_of_rows = no_of_rows;
