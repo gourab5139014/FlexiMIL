@@ -19,6 +19,7 @@ import java.util.ArrayList;
  */
 public class manager {
     private String dataSetFile;
+    private String datasetName;
     private String permissionsFile;
     private String ckdataFile;
     private ArrayList<Integer> c;
@@ -37,6 +38,10 @@ public class manager {
         data = new ArrayList<ArrayList<Object>>();
     }
 
+    public void setDatasetName(String datasetName) {
+        this.datasetName = datasetName;
+    }
+
     private void readCK()
     {
         try{
@@ -45,7 +50,7 @@ public class manager {
             String datarow=br.readLine(); String dataArray[];
             while(datarow!=null)
             {
-                dataArray = datarow.split(",");
+                dataArray = datarow.split(","); System.out.println("Read c,k - "+dataArray[0]+","+dataArray[1]);
                 c.add(Integer.parseInt(dataArray[0]));
                 k.add(Integer.parseInt(dataArray[1]));
                 datarow = br.readLine();
@@ -79,37 +84,48 @@ public class manager {
     {
         String classes[]=fi.getClassColumn();
         int count=0;
-        
+        count=2; //for adult , INSERT CODE HERE
         return count;
     }
-    private void run()
+    public void run()
     {
         int row=0,col=0;
         try {
             FlexiInstance fi = new FlexiInstance(dataSetFile, permissionsFile);
+            fi.run();
             this.s = calculateS(fi);
             mil m = new mil();
             row=fi.getNumberOfRows(); col=fi.getNumberofColumns();
-            result res = new result(dataSetFile, row, col);
+            result res = new result(this.datasetName, row, col);
             readColumnPermission();
             readCK();
             m.setS(this.s);
-
+            
             for(int i=0;i<c.size();i++) //for all c,k values
             {
+                System.err.println("Calculating for C,K -"+c.get(i)+","+k.get(i));
                 m.setC(c.get(i)); m.setK(k.get(i));
+                res.setC(c.get(i)); res.setK(k.get(i));
+                try{
                 for(int j=0;j<col-1;j++) //not the class column
                 {
+                    try{
                     if(toProcess.get(j)==1) { //run mil
-                        res.setColumn(j,m.run(fi.getByIndex(j)));
+                        Double d[]=fi.getByIndex(j);
+                        Integer in[] = m.run(d);
+                        res.setColumn(j,in);
                     }else{
-                          res.setColumn(j,fi.getByIndex(i));
+                        String d2[] = fi.getByIndexString(j);
+                        res.setColumn(j,d2);
                     }
+                    }catch(Exception e) {System.err.println("Inside innermost loop of manager.run()- "); e.printStackTrace();}
                 }
+                } catch(Exception e) {System.err.println("Inside manager.run() innerloop "+e.getLocalizedMessage());}
                 res.setClassColumn(fi.getClassColumn());
                 res.write();
             }
-        }catch(Exception ioe) {System.err.println("Inside manager.run() :"+ioe.getLocalizedMessage());}
+        }catch(Exception ioe) {System.err.println("Inside manager.run() :"+ioe.getLocalizedMessage());
+        ioe.printStackTrace();}
        
     }
 }

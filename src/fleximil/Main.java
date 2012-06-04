@@ -5,7 +5,6 @@
 
 package fleximil;
 
-import flexidatasetinstance.FlexiInstance;
 import java.io.File;
 
 /**
@@ -19,16 +18,16 @@ public class Main {
      */
     public static void main(String[] args) throws Exception{
 
-        FlexiInstance fi = new FlexiInstance("."+File.separator+"datasets"+File.separator+"Iris.data");
-        fi.run();
-//        String c[] = fi.getClassColumn();
-//        for(String s : c) System.out.println(s);
-        Double a[] = fi.getByIndex(0); int i=0;
-//        for(Double f:a) System.out.println(f+" count = "+(++i));
-        mil m = new mil();
-        Integer res[] = m.run(a);
-        i=0;
-        for(Integer in :res) System.out.println(in+" count = "+(++i));
+        manager m = new manager("."+File.separator+"datasets"+File.separator+"adult.data", "."+File.separator+"datasets"+File.separator+"ckadult.data", "."+File.separator+"datasets"+File.separator+"adult.bitset");
+        m.setDatasetName("Adult");
+        m.run();
+//        FlexiInstance fi = new FlexiInstance("."+File.separator+"datasets"+File.separator+"Iris.data");
+//        fi.run();
+//        Double a[] = fi.getByIndex(0); int i=0;
+//        mil m = new mil();
+//        Integer res[] = m.run(a);
+//        i=0;
+//        for(Integer in :res) System.out.println(in+" count = "+(++i));
         
     }
 

@@ -45,14 +45,15 @@ public class mil {
 
     public void setS(int s) {
         this.s = s;
-    }
+   }
 
     public Integer[] run(Double[] a) //replace this by the actual I-MIL Implementation
     {
         Integer[] dummy= new Integer[a.length]; int i=0;
         for(Double d:a){
             dummy[i]=d.intValue();
-            System.out.println(dummy[i]); i++;
+            //System.out.println(dummy[i]);
+            i++;
         }
         return dummy;
     }
