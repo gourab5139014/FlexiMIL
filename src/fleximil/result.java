@@ -88,6 +88,7 @@ public class result {
             /*
              * fetch data from the arraylists and write to files here
              */
+            System.out.println("Writing results to ./results PLEASE WAIT!");
             for(int i=0;i<no_of_rows;i++)
             {
                 writeLine="";
@@ -102,7 +103,7 @@ public class result {
                     writeLine+=(dataRow.get(j)+",");
                 writeLine+=dataRow.get(dataRow.size()-1);
                 writer.write(writeLine);
-                System.err.println("Writing to file : "+writeLine);
+//                System.err.println("Writing to file : "+writeLine);
                 writer.newLine();
             }
             writer.close();
