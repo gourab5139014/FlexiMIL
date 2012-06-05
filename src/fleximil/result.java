@@ -94,8 +94,8 @@ public class result {
                 dataRow.clear();
                 for(ArrayList<Object> a : data)
                 {
-                    dataRow.add((String)a.get(i));
-                    System.err.println("Trying to cast "+a.get(i));
+                    //System.err.println("Trying to cast "+a.get(i));
+                    dataRow.add(""+a.get(i));
 //                    dataRow.add(Integer.toString((Integer)a.get(i)));
                 }
                 for(int j=0;j<dataRow.size()-1;j++)
