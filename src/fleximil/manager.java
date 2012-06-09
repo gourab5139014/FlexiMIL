@@ -84,7 +84,13 @@ public class manager {
     {
         String classes[]=fi.getClassColumn();
         int count=0;
-        count=2; //for adult , INSERT CODE HERE
+        //count=2; //<--for adult , INSERT CODE HERE
+        ArrayList<String> strs = new ArrayList<String>();
+        for(String s:classes){
+            if(!strs.contains(s)) strs.add(s);
+        }
+        count=strs.size();
+        System.out.println("No. of Classes - "+count);
         return count;
     }
     public void run()
