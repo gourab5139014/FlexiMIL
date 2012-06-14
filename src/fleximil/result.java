@@ -103,7 +103,7 @@ public class result {
                     writeLine+=(dataRow.get(j)+",");
                 writeLine+=dataRow.get(dataRow.size()-1);
                 writer.write(writeLine);
-//                System.err.println("Writing to file : "+writeLine);
+                System.err.println("Writing to file : "+writeLine);
                 writer.newLine();
             }
             writer.close();

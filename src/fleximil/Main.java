@@ -21,12 +21,16 @@ public class Main {
     {
         int choice=0;
         DataInputStream din = new DataInputStream(System.in);
-        final int maxChoice=2; //Declare as constant
+        final int maxChoice=6; //Declare as constant
 
         do{
             System.out.println("\n**\tEnter Choice of DataSet\t**");
             System.out.println("1. Adult");
             System.out.println("2. Glass");
+            System.out.println("3. Iris");
+            System.out.println("4. Transfusion");
+            System.out.println("5. Haberman");
+            System.out.println("6. Vertebral");
             System.out.println("0. Exit");
             choice=Integer.parseInt(din.readLine());
             System.err.println("Choice is "+choice);
@@ -41,6 +45,26 @@ public class Main {
             case 2:
                 m = new manager("." + File.separator + "datasets" + File.separator + "glass.csv", "." + File.separator + "datasets" + File.separator + "ckglass.data", "." + File.separator + "datasets" + File.separator + "glass.bitset");
                 m.setDatasetName("Glass");
+                m.run();
+                break;
+            case 3:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Iris.data", "." + File.separator + "datasets" + File.separator + "ckIris.data", "." + File.separator + "datasets" + File.separator + "Iris.bitset");
+                m.setDatasetName("Iris");
+                m.run();
+                break;
+            case 4:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Transfusion.csv", "." + File.separator + "datasets" + File.separator + "ckTransfusion.data", "." + File.separator + "datasets" + File.separator + "Transfusion.bitset");
+                m.setDatasetName("Transfusion");
+                m.run();
+                break;
+            case 5:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Haberman.csv", "." + File.separator + "datasets" + File.separator + "ckHaberman.data", "." + File.separator + "datasets" + File.separator + "Haberman.bitset");
+                m.setDatasetName("Haberman");
+                m.run();
+                break;
+            case 6:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Vertebral.csv", "." + File.separator + "datasets" + File.separator + "ckVertebral.data", "." + File.separator + "datasets" + File.separator + "Vertebral.bitset");
+                m.setDatasetName("Vertebral");
                 m.run();
                 break;
             default:
