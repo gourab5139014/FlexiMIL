@@ -21,7 +21,7 @@ public class Main {
     {
         int choice=0;
         DataInputStream din = new DataInputStream(System.in);
-        final int maxChoice=6; //Declare as constant
+        final int maxChoice=9; //Declare as constant
 
         do{
             System.out.println("\n**\tEnter Choice of DataSet\t**");
@@ -31,6 +31,9 @@ public class Main {
             System.out.println("4. Transfusion");
             System.out.println("5. Haberman");
             System.out.println("6. Vertebral");
+            System.out.println("7. Ecoli");
+            System.out.println("8. Letter Recognition");
+            System.out.println("9. TA Evaluation");
             System.out.println("0. Exit");
             choice=Integer.parseInt(din.readLine());
             System.err.println("Choice is "+choice);
@@ -65,6 +68,21 @@ public class Main {
             case 6:
                 m = new manager("." + File.separator + "datasets" + File.separator + "Vertebral.csv", "." + File.separator + "datasets" + File.separator + "ckVertebral.data", "." + File.separator + "datasets" + File.separator + "Vertebral.bitset");
                 m.setDatasetName("Vertebral");
+                m.run();
+                break;
+            case 7:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Ecoli.csv", "." + File.separator + "datasets" + File.separator + "ckEcoli.data", "." + File.separator + "datasets" + File.separator + "Ecoli.bitset");
+                m.setDatasetName("Ecoli");
+                m.run();
+                break;
+            case 8:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Letter.csv", "." + File.separator + "datasets" + File.separator + "ckLetter.data", "." + File.separator + "datasets" + File.separator + "Letter.bitset");
+                m.setDatasetName("Letter");
+                m.run();
+                break;
+            case 9:
+                m = new manager("." + File.separator + "datasets" + File.separator + "Tae.csv", "." + File.separator + "datasets" + File.separator + "ckTae.data", "." + File.separator + "datasets" + File.separator + "Tae.bitset");
+                m.setDatasetName("Tae");
                 m.run();
                 break;
             default:
